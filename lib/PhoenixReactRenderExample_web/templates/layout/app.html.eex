@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hello PhoenixReactRenderExample!</title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="rev-TopBar">
+        <nav role="navigation">
+          <div class="rev-TopBar-item">
+            <%= menu :ul, horizontalLeft: true do %>
+              <%= menu_item :li, [] do %>
+                <%= link "Home", to: Routes.page_path(@conn, :index) %>
+              <% end %>
+              <%= if @conn.assigns[:current_user] == nil do %>
+                <%= menu_item :li, [] do %>
+                  <%= link "Register", to: Routes.account_path(@conn, :new) %>
+                <% end %>
+                <%= menu_item :li, [] do %>
+                  <%= link "Sign In", to: Routes.session_path(@conn, :new) %>
+                <% end %>
+              <% else %>
+                <%= menu_item :li, [] do %>
+                  <%= link "Settings", to: Routes.account_path(@conn, :edit) %>
+                <% end %>
+                <%= menu_item :li, [] do %>
+                  <%= link "Sign Out", to: Routes.session_path(@conn, :delete) %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        </nav>
+      </div>
+
+      <%= unless is_nil(get_flash(@conn, :info)) do %>
+        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <% end %>
+      <%= unless is_nil(get_flash(@conn, :error)) do %>
+        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <% end %>
+
+      <main role="main">
+        <%= render @view_module, @view_template, assigns %>
+      </main>
+
+    </div> <!-- /container -->
+    <script src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>
