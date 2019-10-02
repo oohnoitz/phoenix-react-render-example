@@ -57,6 +57,7 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    symlinks: false,
   },
   module: {
     rules: [

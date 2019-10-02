@@ -16,6 +16,8 @@ defmodule PhoenixReactRenderExample.Application do
       supervisor(PhoenixReactRenderExample.Repo, []),
       # Start the endpoint when the application starts
       supervisor(PhoenixReactRenderExampleWeb.Endpoint, []),
+      # Start ReactRender server
+      supervisor(ReactRender, [[render_service_path: "#{File.cwd!}/assets", pool_size: 4]]),
       # Start your own worker by calling: PhoenixReactRenderExample.Worker.start_link(arg1, arg2, arg3)
       # worker(PhoenixReactRenderExample.Worker, [arg1, arg2, arg3]),
       {Cluster.Supervisor, [topologies, [name: PhoenixReactRenderExample.ClusterSupervisor]]},
