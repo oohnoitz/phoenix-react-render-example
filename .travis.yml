@@ -15,11 +15,6 @@ jobs:
         - 1.9
       otp_release:
         - 22.0
-      cache:
-        directories:
-          - _build
-          - deps
-          - assets/node_modules
       addons:
         chrome: stable
         postgresql: '9.6'
