@@ -1,4 +1,5 @@
 import 'phoenix_html'
+import {DateTime} from 'luxon'
 import {hydrateClient} from 'react_render/priv/client'
 
 import HelloWorld from './components/HelloWorld'
