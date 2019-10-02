@@ -1,5 +1,21 @@
 import 'phoenix_html'
-import {DateTime} from 'luxon'
+import {hydrateClient} from 'react_render/priv/client'
+
+import HelloWorld from './components/HelloWorld'
+import HelloWorld2 from './components/subdirectory/HelloWorld2'
+import HelloTypeScript from './components/subdirectory/HelloTypeScript.tsx'
+
+const COMPONENTS = {
+  HelloWorld,
+  HelloWorld2,
+  HelloTypeScript,
+}
+
+function getComponentFromStringName(name) {
+  return COMPONENTS[name] || null
+}
+
+hydrateClient(getComponentFromStringName)
 
 /**
  * Updates <time> tags with a datetime attribute in ISO 8601 format to
