@@ -1,5 +1,20 @@
 <%= row do %>
   <%= col do %>
-    <h1>Welcome</h1>
+    <h1>Welcome</h2>
+
+    <%= react_component(
+      "HelloWorld",
+      name: "React Class"
+    ) %>
+
+    <%= react_component(
+      "subdirectory/HelloWorld2",
+      %{name: "React Hooks"}
+    ) %>
+
+    <%= react_component(
+      "subdirectory/HelloTypeScript",
+      name: "TypeScript"
+    ) %>
   <% end %>
 <% end %>
