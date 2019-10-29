@@ -75,8 +75,7 @@ defmodule PhoenixReactRenderExample.Mixfile do
       {:prometheus_plugs, "~> 1.1"},
       {:prometheus_process_collector, "~> 1.4"},
       {:libcluster, "~> 3.0"},
-      {:react_render, github: "revelrylabs/elixir_react_render", branch: "update-render-server", override: true},
-      {:nodejs, github: "revelrylabs/elixir-nodejs", branch: "node-path", override: true}
+      {:react_render, "~> 3.0"}
     ]
   end
 
