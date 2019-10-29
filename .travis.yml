@@ -78,17 +78,3 @@ jobs:
         - npm install --prefix assets
       script:
         - mix integration_tests
-    - stage: docker deploy
-      name: 'Deploy'
-      if: branch = master
-      script: skip
-      before_deploy:
-        - echo $DOCKER_PASSWORD | docker login harbor.revelry-prod.revelry.net -u $DOCKER_USERNAME --password-stdin
-        - export ROLLBAR_DEPLOY_ID=$(./bin/rollbar_release started)
-      after_deploy:
-        - ./bin/rollbar_release succeeded
-      deploy:
-        provider: script
-        script: bin/docker_pub library/PhoenixReactRenderExample harbor.revelry-prod.revelry.net
-        on:
-          branch: master
